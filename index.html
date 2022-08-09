@@ -16,13 +16,15 @@
       </h1>
   
       <form class="form" action="">
-        <input class="form-input" type="text">
-        <button class="form-button"> Novo Item </button>
+        <!-- data-form-input é um data attribute que será utilizado no javascript -->
+        <input class="form-input" type="text" data-form-input>
+        <button class="form-button" data-form-button> Novo Item </button>
       </form>
 
-      <ul class="list">
-      
+      <ul class="list" data-list>
+        <!-- este conteúdo será gerado dinamicamente pelo javascript -->
       </ul>
     </div>
 </body>
+<script src="listaDeTarefas.js"></script>
 </html>
