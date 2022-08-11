@@ -3,6 +3,7 @@
     const botaoDeleta = document.createElement('button')
     botaoDeleta.innerText = 'deletar'
     botaoDeleta.addEventListener('click', deletarTarefa)
+    botaoDeleta.classList.add('done')
     return botaoDeleta
 }
 

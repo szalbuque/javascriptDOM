@@ -16,6 +16,17 @@ body {
   padding: 1rem;
   min-width: 400px;
   min-height: 300px;
+  
+}
+
+.logo {
+  margin-right: 10px;
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
@@ -38,6 +49,7 @@ body {
 }
 
 .form-input {
+  border-radius: 5px;
   outline: none;
   background-color: #F6F1D1;
   border-color: rgba(255, 255, 255, 0.1);
@@ -88,7 +100,7 @@ body {
   justify-content: center;
 }
 .form-input, .form-button {
-  border-radius: 0;
+  border-radius: 5px;
   padding: 0.75rem;
   font-size: 0.75rem;
 }
@@ -147,15 +159,16 @@ body {
   border-radius: 50%;
 }
 
-.task.done .check-icon {
+.task .done .check-icon {
   background-color: #0B2027;
+  border-radius:5px;
 }
 
 .content {
   margin: 0;
 }
 
-.task.done .content {
+.task .done .content {
   text-decoration: line-through;
 }
 
