@@ -1,8 +1,8 @@
 // Depois de separar o código em componentes
 // Não usaremos o IIFE, desta vez vamos usar módulos para encapsular os componentes
 // Aqui vamos importar os componentes que estão em outros arquivos
-import BotaoConclui from './componentes/concluiTarefas'
-import BotaoDeleta from './componentes/deletaTarefa'
+import BotaoConclui from './componentes/concluiTarefas.js'
+import BotaoDeleta from './componentes/deletaTarefa.js'
 
 const criarTarefa = (evento) => {
     // preventDefault serve para que o formulário não limpe automaticamente após pressionar o botão de enviar
