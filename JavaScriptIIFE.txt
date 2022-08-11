@@ -1,0 +1,35 @@
+Immediately Invoked Function Expression
+
+[00:00] Então, temos um problema no nosso código. Talvez você tenha identificado, talvez não. O que está acontecendo é o seguinte, eu vou abrir o DevTools com o “F12”, vou voltar no VS Code, e nós acabamos de criar essa função chamada concluirTarefa, então eu vou copiar o nome dela, voltar no Chrome e jogá-la no DevTools. Colei, vou dar um “Enter”. Olha só, no navegador, nós temos acesso à regra de negócio da nossa função.
+
+[00:33] Vou voltar no VS Code, vou copiar criarTarefa também e, agora voltando no Chrome, vou colar no Console também. Nós também temos acesso à regra de negócio da nossa função criarTarefa.
+
+[00:50] Isso é um problema, as pessoas não podem ter acesso à nossa regra de negócio, ela só tem que simplesmente interagir com a nossa aplicação. Então, temos que bloquear esse tipo de acesso.
+
+[01:02] Então, vou voltar no VS Code. Por que isso está acontecendo? Porque atualmente todo esse arquivo está no escopo global, por isso que temos acesso a ele fora da nossa aplicação ou no navegador no Console.
+
+[01:21] Voltando no VS Code, cada função tem seu próprio escopo. Dentro de const criarTarefa = (evento), eu tenho o escopo de criarTarefa e não consigo acessar nada pelo lado de fora. Por exemplo, se eu tentar acessar lista fora da função criarTarefa, eu vou colocar aqui um console.log e vou tentar acessar a lista em console.log(lista).
+
+[01:50] Salvei, vou voltar no navegador, vou atualizar a página. Olha só, ele já dá para mim no Console “lista is not defined”. Isso porque lista só existe dentro de criarTarefa. Então, o que vamos fazer é uma estratégia similar. Vamos utilizar a “IIFE”, ou Immediately Invoked Function Expression ou “Função de Invocação Imediata”.
+
+[02:17] Vamos colocar todo esse nosso arquivo dentro de um escopo de uma função. Então, a primeira coisa que vamos fazer é colocar dois parênteses, um no começo e um no final do nosso arquivo, e a nossa função já está dentro desses parênteses. Agora, vamos utilizar uma função anônima para executar.
+
+[02:53] Essa função anônima vai receber uma arrow function e essa arrow function tem duas chaves, uma vai no começo e uma vai no final, antes do parênteses. Vou dar um “Enter” para quebrar, e tudo certo, nós colocamos dentro do escopo da função.
+
+[03:17] Se voltarmos no Chrome, eu vou atualizar a página, vou tentar “comprar um abacate”. Quando eu clico em “NOVO ITEM”, no centro da tela, não funcionou. Isso porque, vamos voltar no VS Code, aqui sempre executamos a função anônima.
+
+[03:38] Vou tentar criar no Ceep uma tarefa “comprar um abacate”, vou clicar em “NOVO ITEM”, no centro da tela, e não funcionou. Isso porque estamos dentro do escopo da função, porém, não executamos essa função.
+
+[03:55] Então, é isso que é a função de invocação imediata. Para isso, basta eu colocar abre e fecha parênteses depois do término da função que está indicando que eu estou executando-a.
+
+[04:12] Salvei, voltei no Chrome, vou atualizar aqui e vou digitar “comprar um abacate”. Quando clico em “NOVO ITEM”, no centro da tela, gerou a tarefa, gerou o botão, o botão está funcionando mostrando o estilo, e agora vamos fazer o teste aqui.
+
+[04:25] Vou voltar no Visual Studio Code, vou copiar concluirTarefa. Agora vou vir no Chrome, no Console, coloquei concluirTarefa, apertei “Enter”, e apareceu “concluirTarefa is not defined”. Isso porque concluirTarefa não existe mais no escopo global, concluirTarefa só existe dentro do escopo dessa função.
+
+===================================
+
+IIFE (Immediately Invoked Function Expression) é uma função em JavaScript que é executada assim que definida.
+
+É um Design Pattern também conhecido como Self-Executing Anonymous Function e contém duas partes principais. A primeira é a função anônima cujo escopo léxico é encapsulado entre parênteses. Isso previne o acesso externo às variáveis declaradas na IIFE, bem como evita que estas variáveis locais poluam o escopo global.
+
+A segunda parte corresponde à criação da expressão (), por meio da qual o interpretador JavaScript avaliará e executará a função.

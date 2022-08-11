@@ -1,3 +1,9 @@
+// Depois de separar o código em componentes
+// Não usaremos o IIFE, desta vez vamos usar módulos para encapsular os componentes
+// Aqui vamos importar os componentes que estão em outros arquivos
+import BotaoConclui from './componentes/concluiTarefas'
+import BotaoDeleta from './componentes/deletaTarefa'
+
 const criarTarefa = (evento) => {
     // preventDefault serve para que o formulário não limpe automaticamente após pressionar o botão de enviar
     evento.preventDefault()
@@ -16,6 +22,9 @@ const criarTarefa = (evento) => {
     const conteudo = `<p class="content">${valor}</p>`
     // a seguir, vamos atribuir o parágrafo criado ao HTML da li tarefa
     tarefa.innerHTML = conteudo
+    // adiciona o botão de concluir tarefa como filho de tarefa
+    tarefa.appendChild(BotaoConclui())
+    tarefa.appendChild(BotaoDeleta())
     // depois, precisamos adicionar a tarefa (li) como um filho da lista (ul)
     lista.appendChild(tarefa)
     input.value = " "
@@ -26,3 +35,4 @@ const novaTarefa = document.querySelector('[data-form-button]')
 
 // aqui adicionamos um event listener para chamar a função criarTarefa quando o botão for clicado
 novaTarefa.addEventListener('click', criarTarefa)
+
