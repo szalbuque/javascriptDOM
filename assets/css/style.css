@@ -159,7 +159,7 @@ body {
   border-radius: 50%;
 }
 
-.task .done .check-icon {
+.task.done .check-icon {
   background-color: #0B2027;
   border-radius:5px;
 }
@@ -168,7 +168,7 @@ body {
   margin: 0;
 }
 
-.task .done .content {
+.task.done .content {
   text-decoration: line-through;
 }
 

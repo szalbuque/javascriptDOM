@@ -20,6 +20,7 @@
       <form class="form" action="">
         <!-- data-form-input é um data attribute que será utilizado no javascript -->
         <input class="form-input" type="text" data-form-input>
+        <input type="datetime-local" placeholder="dd/mm/aaaa hh:mm" data-form-date >
         <button class="form-button" data-form-button> Novo Item </button>
       </form>
 
@@ -28,5 +29,6 @@
       </ul>
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 <script type="module" src="main.js"></script>
 </html>
