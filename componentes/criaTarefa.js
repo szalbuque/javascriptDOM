@@ -2,6 +2,7 @@
 // Aqui vamos importar os componentes que estão em outros arquivos
 import BotaoConclui from './concluiTarefas.js'
 import BotaoDeleta from './deletaTarefa.js'
+import {carregaTarefa} from './carregaTarefa.js'
 
 // A função abaixo vai preparar o conteúdo para a criação da tarefa
 export const handleNovoItem = (evento) => {
@@ -36,7 +37,11 @@ export const handleNovoItem = (evento) => {
     localStorage.setItem('tarefas',JSON.stringify(tarefasAtualizadas))
     input.value = " "
     data.value=""
+    // abaixo chamamos novamente a função carregaTarefa() para recarregar incluindo a última tarefa digitada
+    carregaTarefa()
 }
+
+
 
 // a função abaixo será responsável por montar a tarefa
 export const Tarefa = ({valor , dataFormatada}) => {

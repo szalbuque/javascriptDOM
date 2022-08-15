@@ -136,6 +136,10 @@ body {
   padding: 1rem 3rem;
 }
 
+.content-data {
+  color: #F6F1D1;
+}
+
 .check-button, .delete-button {
   background-color: #F6F1D1;
   border: none;
