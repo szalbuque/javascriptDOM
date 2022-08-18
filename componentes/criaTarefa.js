@@ -10,17 +10,16 @@ export const handleNovoItem = (evento) => {
     evento.preventDefault()
     // a constante tarefas vai receber o conteúdo do que está no localStorage ou, se não tiver nada lá, recebe um array vazio
     const tarefas = JSON.parse(localStorage.getItem('tarefas')) || []
-    // a constante lista conterá o objeto lista
-    const lista = document.querySelector('[data-list]')
     // a constante input irá conter o objeto associado ao data attribute data-form-input
     const  input = document.querySelector('[data-form-input]')
+    // a constante valor conterá o texto digitado dentro do campo do formulário
+    const valor = input.value
     // a constante calendario recebe o objeto associado ao data attribute data-form-date
     const calendario = document.querySelector('[data-form-date]')
     // abaixo usamos a biblioteca moment.js para formatar a data
     const data = moment(calendario.value)
     const dataFormatada = data.format("DD/MM/YYYY")
-    // a constante valor conterá o texto digitado dentro do campo do formulário
-    const valor = input.value
+   
     // a estrutura abaixo conterá os dados que serão usados na criação da tarefa
     const dados = {
         valor,
@@ -29,11 +28,7 @@ export const handleNovoItem = (evento) => {
     // tarefasAtualizadas recebe as tarefas que estavam no localstorage e os dados digitados pelo usuário
     // usamos spread operator (...tarefas) que transforma os elementos do array em argumentos da constante
     const tarefasAtualizadas = [...tarefas, dados]
-    // abaixo a chamada da função Tarefa, passando a estrutura dados como parâmetro
-    const criaTarefa = Tarefa(dados)
-    // por fim, adicionamos a tarefa criada à lista
-    lista.appendChild(criaTarefa)
-    // abaixo armazenamos no localStorage a chave 'tarefas' e as tarefas atualizadas
+   
     localStorage.setItem('tarefas',JSON.stringify(tarefasAtualizadas))
     input.value = " "
     data.value=""
