@@ -19,11 +19,13 @@ export const handleNovoItem = (evento) => {
     // abaixo usamos a biblioteca moment.js para formatar a data
     const data = moment(calendario.value)
     const dataFormatada = data.format("DD/MM/YYYY")
-   
+    // a constante concluida vai indicar o estado atual da tarefa
+    const concluida = false
     // a estrutura abaixo conterá os dados que serão usados na criação da tarefa
     const dados = {
         valor,
-        dataFormatada
+        dataFormatada,
+        concluida
     }
     // tarefasAtualizadas recebe as tarefas que estavam no localstorage e os dados digitados pelo usuário
     // usamos spread operator (...tarefas) que transforma os elementos do array em argumentos da constante
@@ -39,18 +41,25 @@ export const handleNovoItem = (evento) => {
 
 
 // a função abaixo será responsável por montar a tarefa
-export const Tarefa = ({valor , dataFormatada}) => {
+export const Tarefa = ({valor , dataFormatada , concluida}, id) => {
    // a constante tarefa conterá um objeto novo do tipo li
    const tarefa = document.createElement('li')
    // é necessário acrescentar a classe a esta tarefa (li) criada, para fazer a estilização com o css
-   tarefa.classList.add('task')
+   
    // a constante conteudo conterá uma template string do tipo parágrafo contendo
    // o texto digitado no formulário e a data/hora selecionada
    const conteudo = `<p class="content">${dataFormatada} * ${valor}</p>`
+   // Adiciona a classe done se a tarefa estiver concluida ou a classe task caso contrário
+   if (concluida) {
+    tarefa.classList.add('done')
+   } 
+   
+    tarefa.classList.add('task')
+   
    // a seguir, vamos atribuir o parágrafo criado ao HTML da li tarefa
    tarefa.innerHTML = conteudo
    // adiciona o botão de concluir tarefa como filho de tarefa
-   tarefa.appendChild(BotaoConclui())
+   tarefa.appendChild(BotaoConclui(carregaTarefa,id))
    tarefa.appendChild(BotaoDeleta())
  
    return tarefa

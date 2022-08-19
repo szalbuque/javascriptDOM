@@ -12,7 +12,7 @@ export const removeDatasRepetidas = (datas) => {
     return datasUnicas
 }
 
-
+// ordena as tarefas por data
 export const ordenaDatas = (data) => { 
     data.sort((a, b) => {
         const primeiraData = moment(a, 'DD/MM/YYYY').format('YYYYMMDD')

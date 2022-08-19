@@ -13,11 +13,12 @@ export const criaData = (data) => {
     dataTopo.innerHTML = conteudo
     // abaixo, ele vai percorrer o objeto tarefas, que contém as tarefas armazenadas no localStorage e
     // adicionar essas tarefas como filhas do elemento dataTopo, usando a função Tarefa contida em criaTarefa
-    tarefas.forEach((tarefa => {
+    // o forEach vai passar, junto com cada tarefa, um identificador daquela tarefa, chamado id
+    tarefas.forEach(((tarefa , id) => {
         const dia = moment(tarefa.dataFormatada, 'DD/MM/YYYY')
         const diff = dataMoment.diff(dia)
         if (diff == 0){
-            dataTopo.appendChild(Tarefa(tarefa))
+            dataTopo.appendChild(Tarefa(tarefa, id))
         }
         
     }))
