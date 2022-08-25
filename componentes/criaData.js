@@ -17,7 +17,7 @@ export const criaData = (data) => {
     tarefas.forEach(((tarefa , id) => {
         const dia = moment(tarefa.dataFormatada, 'DD/MM/YYYY')
         const diff = dataMoment.diff(dia)
-        if (diff == 0){
+        if (diff === 0){
             dataTopo.appendChild(Tarefa(tarefa, id))
         }
         

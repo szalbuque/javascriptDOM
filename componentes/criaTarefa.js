@@ -18,6 +18,7 @@ export const handleNovoItem = (evento) => {
     const calendario = document.querySelector('[data-form-date]')
     // abaixo usamos a biblioteca moment.js para formatar a data
     const data = moment(calendario.value)
+    const horario = data.format('HH:mm')
     const dataFormatada = data.format("DD/MM/YYYY")
     // a constante concluida vai indicar o estado atual da tarefa
     const concluida = false
@@ -25,6 +26,7 @@ export const handleNovoItem = (evento) => {
     const dados = {
         valor,
         dataFormatada,
+        horario,
         concluida
     }
     // tarefasAtualizadas recebe as tarefas que estavam no localstorage e os dados digitados pelo usuário
@@ -33,7 +35,7 @@ export const handleNovoItem = (evento) => {
    
     localStorage.setItem('tarefas',JSON.stringify(tarefasAtualizadas))
     input.value = " "
-    data.value=""
+    
     // abaixo chamamos novamente a função carregaTarefa() para recarregar incluindo a última tarefa digitada
     carregaTarefa()
 }
@@ -41,14 +43,14 @@ export const handleNovoItem = (evento) => {
 
 
 // a função abaixo será responsável por montar a tarefa
-export const Tarefa = ({valor , dataFormatada , concluida}, id) => {
+export const Tarefa = ({valor , horario , concluida}, id) => {
    // a constante tarefa conterá um objeto novo do tipo li
    const tarefa = document.createElement('li')
    // é necessário acrescentar a classe a esta tarefa (li) criada, para fazer a estilização com o css
    
    // a constante conteudo conterá uma template string do tipo parágrafo contendo
    // o texto digitado no formulário e a data/hora selecionada
-   const conteudo = `<p class="content">${dataFormatada} * ${valor}</p>`
+   const conteudo = `<p class="content">${horario} * ${valor}</p>`
    // Adiciona a classe done se a tarefa estiver concluida ou a classe task caso contrário
    if (concluida) {
     tarefa.classList.add('done')
@@ -60,7 +62,7 @@ export const Tarefa = ({valor , dataFormatada , concluida}, id) => {
    tarefa.innerHTML = conteudo
    // adiciona o botão de concluir tarefa como filho de tarefa
    tarefa.appendChild(BotaoConclui(carregaTarefa,id))
-   tarefa.appendChild(BotaoDeleta())
+   tarefa.appendChild(BotaoDeleta(carregaTarefa,id))
  
    return tarefa
 }
